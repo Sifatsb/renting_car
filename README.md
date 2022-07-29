@@ -1,16 +1,31 @@
 # renting_car
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Car Renting Flutter project -
+ ** for database Sqflite has been used .
+ ** for login,signup simple logic has been builed (firebase authentication will be included soon).
+ ** All plugins list :
+  - lottie:
+  - sqflite: ^2.0.3
+  - url_launcher:
+  - image_picker:
+  - intl:
+  - path:
+  - provider:
+  - shared_preferences:
+  - cool_alert: ^1.1.0
+  
+  *** Funtionality wise work has been done .
+  
+  
+ Admin :
+   # Admin can Add car
+   # Add Driver
+   # Can delete them.
+   *** A relation has been build  between Car and driver. A driver can be asigned  with car when adding a new car.
+   
+ User :
+ # A user can choose car by searching name, showing driver experience and car capacity.
+ # After selecting a car driver can change his or her selection then he/she can choose price/package and can buid own custom package as well.
+ # Then he/she need to provide his/her full information to confirm the booking.
+ # After that a booking confirmation will appear.
+ 
