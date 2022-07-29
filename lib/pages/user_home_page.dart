@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/flutter_login.dart';
 import 'package:provider/provider.dart';
 import 'package:renting_car/pages/user_car_showing_page.dart';
 
@@ -18,33 +19,21 @@ class _UserHomepageState extends State<UserHomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("User Page"),
+        backgroundColor: Colors.deepOrange,
+        title: Text("User Page",style: TextStyle(color: Colors.white70),),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            "Sthanantor",
-            style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange),
-            textAlign: TextAlign.end,
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, UserCarShowing.routeName);
-            },
-            style: TextButton.styleFrom(
-                alignment: Alignment.bottomCenter,
-                primary: Colors.red,
-                elevation: 2,
-                backgroundColor: Colors.amber),
-            child: Text("Get Started...."),
-          )
-        ],
+      body: FlutterLogin(
+        theme: LoginTheme(primaryColor: Colors.orangeAccent),
+        logo: AssetImage(
+          'images/bugatti.png',
+        ),
+        onLogin: (LoginData) {
+          Navigator.pushReplacementNamed(context, UserCarShowing.routeName);
+        },
+        onRecoverPassword: (String) {},
+        onSignup: (SignupData) {
+          Navigator.pushReplacementNamed(context, UserCarShowing.routeName);
+        },
       ),
     );
   }

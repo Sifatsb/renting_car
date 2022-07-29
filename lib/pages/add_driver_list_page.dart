@@ -18,8 +18,13 @@ class _AddDriverListPageState extends State<AddDriverListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
-        title: Text("Admin Driver List Page"),
+        backgroundColor: Colors.orange,
+        title: Text(
+          "Admin Driver List Page",
+          style: TextStyle(color: Colors.white70),
+        ),
       ),
       body: Consumer<AddDriverProvider>(
         builder: (context, provider, _) => ListView.builder(
@@ -42,19 +47,55 @@ class _AddDriverListPageState extends State<AddDriverListPage> {
                   size: 40,
                 ),
               ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: FileImage(File(driver.driverImage!)),
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: Colors.deepOrange,
+                    elevation: 10,
+                    shadowColor: Colors.green,
+                    margin: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: FileImage(File(
+                              driver.driverImage!,
+
+                            )),
+                          ),
+                          title: Text(driver.driverName.toUpperCase(),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20)),
+                          subtitle: Text(driver.driverPhoneNumber,
+                              style: TextStyle(color: Colors.white)),
+                        ),
+                        ButtonTheme(
+                          child: ButtonBar(
+                            children: <Widget>[
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context,
+                                        AddDriverShowAllDetailsPage.routeName,
+                                        arguments: driver.id);
+                                  },
+                                  child: Text("Show Details",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20))),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                title: Text(driver.driverName.toUpperCase()),
-                subtitle: Text(driver.driverPhoneNumber),
-                trailing: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AddDriverShowAllDetailsPage.routeName,
-                          arguments: driver.id);
-                    },
-                    child: Text("Show Details")),
               ),
             );
           },

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renting_car/models/add_car.dart';
 import 'package:renting_car/pages/choose_driver_page.dart';
+import 'package:renting_car/pages/user_home_page.dart';
 import 'package:renting_car/provider/add_car_provider.dart';
 
 class UserCarShowing extends StatefulWidget {
@@ -62,14 +63,14 @@ class _UserCarShowingState extends State<UserCarShowing> {
               if (selectedIndex == 0) {
                 provider.getAllCars();
               } else if (selectedIndex == 1) {
-                // provider.getAllFavContacts();
+              Navigator.pushReplacementNamed(context, UserHomepage.routeName);
               }
             },
             items: [
               BottomNavigationBarItem(
                   icon: Icon(Icons.car_crash_rounded), label: "All Cars"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.car_crash_rounded), label: "TESLA"),
+                  icon: Icon(Icons.car_crash_rounded), label: "Home"),
             ],
           ),
         ),
@@ -111,11 +112,9 @@ class _UserCarShowingState extends State<UserCarShowing> {
               textAlign: TextAlign.start,
             ),
             SizedBox(
-              height: 30,
+              height: 60,
             ),
-            SizedBox(
-              height: 30,
-            ),
+
             Container(
               height: 500,
               width: 70,
@@ -125,6 +124,7 @@ class _UserCarShowingState extends State<UserCarShowing> {
                       itemBuilder: (context, index) {
                         final car = provider.addCarList[index];
                         return Card(
+
                           child: InkWell(
                             onTap: () {
                               Navigator.pushNamed(

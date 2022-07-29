@@ -44,6 +44,8 @@ dependencies:
   provider:
   shared_preferences:
   cool_alert: ^1.1.0
+  flutter_login:
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:

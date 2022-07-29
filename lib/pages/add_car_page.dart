@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:renting_car/models/add_car.dart';
+import 'package:renting_car/pages/admin_home_page.dart';
 import 'package:renting_car/provider/add_car_provider.dart';
 import 'package:renting_car/provider/add_driver_provider.dart';
 
@@ -32,7 +33,6 @@ class _AddCarPageState extends State<AddCarPage> {
 
   late AddDriverProvider addDriverProvider;
 
-
   // bool _oneClickedGetDriver = true;
   // @override
   // void didChangeDependencies() {
@@ -58,10 +58,20 @@ class _AddCarPageState extends State<AddCarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
-        title: Text('Add Car'),
+        backgroundColor: Colors.deepOrange,
+        title: Text(
+          'Admin - Add Car',
+          style: TextStyle(color: Colors.white70),
+        ),
         actions: [
-          IconButton(onPressed: _saveAddCarPage, icon: Icon(Icons.save))
+          IconButton(
+              onPressed: _saveAddCarPage,
+              icon: Icon(
+                Icons.save,
+                color: Colors.white70,
+              ))
         ],
       ),
       body: Form(
@@ -99,88 +109,135 @@ class _AddCarPageState extends State<AddCarPage> {
                   labelText: 'Car Manfacturer', prefixIcon: Icon(Icons.person)),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Card(
+              color: Colors.deepOrange,
+              elevation: 25,
+              shadowColor: Colors.green,
+              margin: EdgeInsets.all(10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Card(
+                    color: Colors.deepOrange,
+                    elevation: 25,
+                    shadowColor: Colors.green,
+                    margin: EdgeInsets.all(10),
                     child: _imagePath == null
                         ? Image.asset(
                             'images/img.png',
-                            height: 100,
-                            width: 100,
+                            height: 200,
+                            width: 200,
                             fit: BoxFit.contain,
                           )
                         : Image.file(
                             File(
                               _imagePath!,
                             ),
-                            height: 100,
-                            width: 100,
+                            height: 200,
+                            width: 200,
                             fit: BoxFit.contain,
                           ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.pink,
+                              fixedSize: const Size(130, 40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50))),
                           onPressed: () {
                             _imageSource = ImageSource.camera;
                             _getImage();
                           },
-                          child: Text('Camera')),
+                          child: Text(
+                            'Camera',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          )),
                       SizedBox(
                         width: 20,
                       ),
                       ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.pink,
+                              fixedSize: const Size(130, 40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50))),
                           onPressed: () {
                             _imageSource = ImageSource.gallery;
                             _getImage();
                           },
-                          child: Text('Gallery')),
+                          child: Text(
+                            'Gallery',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          )),
                     ],
                   ),
                   SizedBox(
                     height: 30,
                   ),
-                  Consumer<AddDriverProvider>(
-                    builder: (context, provider, _) => DropdownButton<String>(
-                      dropdownColor: Colors.amber,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.brown,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      isExpanded: true,
-                      value: driverName,
-                      hint: const Text(
-                        'Select Driver',
+                  Padding(
+                    padding: const EdgeInsets.all(28.0),
+                    child: Consumer<AddDriverProvider>(
+                      builder: (context, provider, _) => DropdownButton<String>(
+                        dropdownColor: Colors.amber,
                         style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown),
+                          fontSize: 20,
+                          color: Colors.brown,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        isExpanded: true,
+                        value: driverName,
+                        hint: const Text(
+                          'Select Driver',
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.yellowAccent),
+                        ),
+                        items: provider.driversName
+                            .map(
+                              (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(e),
+                                  )),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            driverName = value;
+                          });
+                        },
                       ),
-                      items: provider.driversName
-                          .map(
-                            (e) => DropdownMenuItem(
-                                value: e,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(e),
-                                )),
-                          )
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          driverName = value;
-                        });
-                      },
                     ),
                   ),
                 ],
               ),
-            )
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                  alignment: Alignment.bottomCenter,
+                  primary: Colors.white,
+                  backgroundColor: Colors.teal,
+                  onSurface: Colors.grey,
+                  shadowColor: Colors.red,
+                  elevation: 15,
+                ),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, AdminHomePage.routeName);
+                },
+                child: Text(
+                  "Click Here to travel Home page Again",
+                  style: TextStyle(fontSize: 20),
+                )),
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:renting_car/pages/add_driver_details_page.dart';
 import 'package:renting_car/pages/add_driver_list_page.dart';
 import 'package:renting_car/pages/add_driver_page.dart';
 import 'package:renting_car/pages/admin_home_page.dart';
+import 'package:renting_car/pages/admin_login_page.dart';
 import 'package:renting_car/pages/booking_page.dart';
 import 'package:renting_car/pages/choose_driver_page.dart';
 import 'package:renting_car/pages/confirm_booking.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         UserCarShowing.routeName: (context) => UserCarShowing(),
         ChooseDriverPage.routeName: (context) => ChooseDriverPage(),
         BookingPage.routeName: (context) => BookingPage(),
+        AdminLoginPage.routeName: (context) => AdminLoginPage(),
         ConfirmBooking.routeName: (context) => ConfirmBooking(),
         AddCarShowAllDetailsPage.routeName: (context) =>
             AddCarShowAllDetailsPage(),

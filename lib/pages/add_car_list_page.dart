@@ -18,8 +18,13 @@ class _AddCarListPageState extends State<AddCarListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
-        title: Text("Admin- Show Cars List"),
+        backgroundColor: Colors.orange,
+        title: Text(
+          "Admin- Show Cars List",
+          style: TextStyle(color: Colors.white70),
+        ),
       ),
       body: Consumer<AddCarProvider>(
         builder: (context, provider, _) => ListView.builder(
@@ -42,20 +47,57 @@ class _AddCarListPageState extends State<AddCarListPage> {
                   size: 40,
                 ),
               ),
-              child: ListTile(
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    color: Colors.deepOrange,
+                    elevation: 10,
 
-                leading: CircleAvatar(
-                  backgroundImage: FileImage(File(cars.carImage!)),
+                    shadowColor: Colors.green,
+                    margin: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: FileImage(
+                              File(cars.carImage!),
+                            ),
+
+                            backgroundColor: Colors.red,
+                          ),
+                          title: Text(cars.carName.toUpperCase(),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25)),
+                          subtitle: Text("Car Number :  ${cars.carNumber}",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15)),
+                        ),
+                        ButtonTheme(
+                          child: ButtonBar(
+                            children: <Widget>[
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context,
+                                        AddCarShowAllDetailsPage.routeName,
+                                        arguments: cars.id);
+                                  },
+                                  child: Text("Show Details",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20))),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                title: Text(cars.carName.toUpperCase()),
-                subtitle: Text(cars.carNumber),
-                trailing: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AddCarShowAllDetailsPage.routeName,
-                          arguments: cars.id);
-                    },
-                    child: Text("Show Details")),
               ),
             );
           },
