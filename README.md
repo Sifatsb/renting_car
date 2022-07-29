@@ -24,7 +24,7 @@ Car Renting Flutter project -
    - Can delete them.
    - A relation has been build  between Car and driver. A driver can be asigned  with car when adding a new car.
    
- #User :
+ # User :
  - A user can choose car by searching name, showing driver experience and car capacity.
  - After selecting a car driver can change his or her selection then he/she can choose price/package and can buid own custom package as well.
  - Then he/she need to provide his/her full information to confirm the booking.
