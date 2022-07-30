@@ -29,22 +29,24 @@ class _AddDriverShowAllDetailsPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      // backgroundColor: Colors.orange,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text(
+        title: const Text(
           "Admin Show All Driver Details",
           style: TextStyle(color: Colors.white70),
         ),
       ),
+
       body: Consumer<AddDriverProvider>(
         builder: (context, provider, _) => FutureBuilder<AddDriverModel>(
           future: provider.getAddDriversById(id),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final model = snapshot.data;
+
               return Card(
-                color: Colors.red,
+
                 elevation: 25,
                 shadowColor: Colors.green,
                 child: Column(
@@ -58,113 +60,118 @@ class _AddDriverShowAllDetailsPageState
                         child: Container(
                           height: 300,
                           width: 400,
-                          decoration: BoxDecoration(shape: BoxShape.circle),
+                          decoration: const BoxDecoration(shape: BoxShape.circle),
                           child: Image.file(
                             File(model!.driverImage!),
                             height: 350,
+                            width: MediaQuery.of(context).size.width,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
+
+
+
+                    const SizedBox(height: 30,),
                     Card(
-                        color: Colors.redAccent,
+                        color: Colors.white38,
                         child: Column(
                           children: [
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.person,
-                                  size: 30,
+                                  size: 40,
                                 ),
                                 Text(
                                     " Driver Name - ${model.driverName.toUpperCase()}",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.numbers,
-                                  size: 30,
+                                  size: 40,
                                 ),
                                 Text(
                                     " Driver Phone Number\n - ${model.driverPhoneNumber}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.now_widgets_outlined,
-                                  size: 30,
+                                  size: 40,
                                 ),
                                 Text(" Driver NID Number - ${model.driverNid}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.car_rental,
-                                  size: 30,
+                                  size: 40,
                                 ),
                                 Text(
                                     " List of Driving Car Name - ${model.drivingCarName}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.extension,
-                                  size: 30,
+                                  size: 40,
                                 ),
                                 Text(
                                     " Driving Experience - ${model.driverExperience}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
                           ],
                         )),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
 

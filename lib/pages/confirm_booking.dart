@@ -1,7 +1,7 @@
+
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:renting_car/pages/booking_page.dart';
 import 'package:renting_car/provider/booking_provider.dart';
 
 class ConfirmBooking extends StatefulWidget {
@@ -56,7 +56,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("Rent Amount", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("$rentAmount\$", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("$rentAmount\$", style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -67,7 +67,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("UserName:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.userName}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text(booking.userName, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -78,7 +78,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("User Number:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.userNumber}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text(booking.userNumber, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -89,7 +89,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("User Email:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.userEmail}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userEmail}", style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -100,7 +100,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("Current Location:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.userFrom}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text(booking.userFrom, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -111,7 +111,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("Destination:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.userTo}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text(booking.userTo, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -122,7 +122,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 children: [
 
                                   const Text("Rent Date:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                                  Text("${booking.rentDate}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text(booking.rentDate, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
 
                                 ],
                               ),
@@ -140,7 +140,9 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                                 type: CoolAlertType.success,
                                 text: "Your transaction was successful!",
                               );
-                              provider.addBookingList.clear();
+                              setState(() {
+                                provider.addBookingList.clear();
+                              });
 
                             },
                             style: ElevatedButton.styleFrom(

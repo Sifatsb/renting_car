@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:renting_car/pages/admin_home_page.dart';
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
-        title: const Text('Sthanantror', textAlign: TextAlign.center,),
+        title: const Text('Sthanantror'),
       ),
       body: SafeArea(
 

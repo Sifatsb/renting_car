@@ -46,7 +46,6 @@ dependencies:
   cool_alert: ^1.1.0
   flutter_login:
   carousel_slider:
-  audioplayers:
 
 dev_dependencies:
   flutter_test:

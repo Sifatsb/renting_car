@@ -28,25 +28,28 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      // backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         title: Text("Admin Show  Car Details"),
       ),
+
       body: Consumer<AddCarProvider>(
         builder: (context, provider, _) => FutureBuilder<AddCarModel>(
           future: provider.getAddCarsById(id),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final model = snapshot.data;
+
               return Card(
-                color: Colors.red,
+                // color: Colors.red,
                 elevation: 25,
                 shadowColor: Colors.green,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8.0, vertical: 8),
@@ -56,91 +59,96 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                         child: Image.file(
                           File(model!.carImage!),
                           height: 350,
-                          fit: BoxFit.contain,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
+
+                    SizedBox(height: 20,),
                     Card(
-                        color: Colors.redAccent,
+                        color: Colors.white38,
                         child: Column(
                           children: [
+
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.person,
-                                  size: 60,
+                                  size: 40,
                                 ),
                                 Text(
                                     " Car Name - ${model.carName.toUpperCase()}",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
-                              height: 15,
-                            ),
+                            const SizedBox(height: 15,),
+
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.numbers,
-                                  size: 60,
+                                  size: 40,
                                 ),
                                 Text(" Car Number - ${model.carNumber}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
-                              height: 15,
-                            ),
+                            const SizedBox(height: 15,),
+
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.event_seat,
-                                  size: 60,
+                                  size: 40,
                                 ),
                                 Text(" Car Capacity - ${model.carCapacity}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
+
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.production_quantity_limits_sharp,
-                                  size: 60,
+                                  size: 40,
                                 ),
                                 Text(
                                     " Car Manufacturer - ${model.carManufacturer}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                      backgroundColor: Colors.grey,
+                                      color: Colors.black,
+                                      backgroundColor: Colors.white38,
                                     )),
                               ],
                             ),
                             SizedBox(
                               height: 15,
                             ),
+
                           ],
                         )),
-                    SizedBox(
+
+                    const SizedBox(
                       height: 20,
                     ),
 
