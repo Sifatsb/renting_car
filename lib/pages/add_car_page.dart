@@ -221,23 +221,7 @@ class _AddCarPageState extends State<AddCarPage> {
                 ],
               ),
             ),
-            TextButton(
-                style: TextButton.styleFrom(
-                  alignment: Alignment.bottomCenter,
-                  primary: Colors.white,
-                  backgroundColor: Colors.teal,
-                  onSurface: Colors.grey,
-                  shadowColor: Colors.red,
-                  elevation: 15,
-                ),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, AdminHomePage.routeName);
-                },
-                child: Text(
-                  "Click Here to travel Home page Again",
-                  style: TextStyle(fontSize: 20),
-                )),
+
           ],
         ),
       ),

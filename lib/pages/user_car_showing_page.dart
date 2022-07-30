@@ -30,21 +30,21 @@ class _UserCarShowingState extends State<UserCarShowing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text(
-          'hye!!! welcome',
+        title: const Text(
+          'Cars',
           style: TextStyle(color: Colors.white70),
         ),
         actions: [
           PopupMenuButton(
               itemBuilder: (context) => [
-                    PopupMenuItem(onTap: () {}, child: const Text('About')),
-                    PopupMenuItem(onTap: () {}, child: const Text('Home')),
-                    PopupMenuItem(onTap: () {}, child: const Text('LOGIN')),
-                    PopupMenuItem(onTap: () {}, child: const Text('LOGOUT')),
-                  ])
+                PopupMenuItem(onTap: () {}, child: const Text('About')),
+                PopupMenuItem(onTap: () {}, child: const Text('Home')),
+                PopupMenuItem(onTap: () {}, child: const Text('LOGIN')),
+                PopupMenuItem(onTap: () {}, child: const Text('LOGOUT')),
+              ])
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -63,10 +63,10 @@ class _UserCarShowingState extends State<UserCarShowing> {
               if (selectedIndex == 0) {
                 provider.getAllCars();
               } else if (selectedIndex == 1) {
-              Navigator.pushReplacementNamed(context, UserHomepage.routeName);
+                Navigator.pushReplacementNamed(context, UserHomepage.routeName);
               }
             },
-            items: [
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(Icons.car_crash_rounded), label: "All Cars"),
               BottomNavigationBarItem(
@@ -75,14 +75,14 @@ class _UserCarShowingState extends State<UserCarShowing> {
           ),
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ListTile(
               title: TextField(
                 controller: searchController,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Search car by  name..",
                   prefixIcon: Icon(Icons.car_rental_rounded),
                 ),
@@ -97,27 +97,13 @@ class _UserCarShowingState extends State<UserCarShowing> {
                       },
                       icon: Icon(Icons.search))),
             ),
-            Text(
-              "Thousand of Car",
-              style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54),
-              textAlign: TextAlign.start,
-            ),
-            Text(
-              "WAITING FOR YOU",
-              style: TextStyle(
-                  fontSize: 40, fontWeight: FontWeight.bold, color: Colors.red),
-              textAlign: TextAlign.start,
-            ),
-            SizedBox(
-              height: 60,
+            const SizedBox(
+              height: 10,
             ),
 
-            Container(
-              height: 500,
-              width: 70,
+            SizedBox(
+              height: MediaQuery.of(context).size.height-250,
+              width: MediaQuery.of(context).size.height,
               child: Consumer<AddCarProvider>(
                   builder: (context, provider, _) => ListView.builder(
                       itemCount: provider.addCarList.length,
@@ -131,19 +117,36 @@ class _UserCarShowingState extends State<UserCarShowing> {
                                   context, ChooseDriverPage.routeName,
                                   arguments: car.id);
                             },
-                            child: Column(
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Image.file(
-                                  File(car.carImage!),
-                                  height: 60,
-                                  fit: BoxFit.cover,
-                                  width: 30,
+                                Column(
+                                  children: [
+
+                                    Image.file(
+                                      File(car.carImage!),
+                                      height: 200,
+                                      fit: BoxFit.contain,
+                                      width: MediaQuery.of(context).size.height/5,
+                                    ),
+
+                                  ],
                                 ),
-                                Text(car.carName),
-                                Text(car.carDriverName.toString()),
-                                Text(car.carNumber),
+
+                                Column(
+                                  children: [
+                                    Text('Car Name: ${car.carName}'),
+                                    Text('Driver Name: ${car.carDriverName.toString()}'),
+                                    Text('Car Number: ${car.carNumber}'),
+                                    Text('Capacity: ${car.carCapacity}'),
+
+                                  ],
+                                ),
+
                               ],
                             ),
+
                           ),
                         );
                       })),

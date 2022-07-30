@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:renting_car/pages/add_car_details_page.dart';
 import 'package:renting_car/pages/add_car_list_page.dart';
 import 'package:renting_car/pages/add_car_page.dart';
 import 'package:renting_car/pages/add_driver_list_page.dart';
@@ -29,7 +30,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         title: const Text(
@@ -52,7 +53,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
             if (selectedIndex == 0) {
             } else if (selectedIndex == 1) {}
           },
-          items: [
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home Page"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.details), label: "About Page"),
@@ -61,11 +62,13 @@ class _AdminHomePageState extends State<AdminHomePage> {
       ),
       body: Center(
         child: Column(
+
           children: [
+
             CarouselSlider(
               options: CarouselOptions(
                 autoPlay: true,
-                height: MediaQuery.of(context).size.height - 600,
+                height: MediaQuery.of(context).size.height - 400,
               ),
               items: imagesList
                   .map(
@@ -77,7 +80,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                             child: Image.asset(
                               item,
                               fit: BoxFit.cover,
-                              height: MediaQuery.of(context).size.height - 600,
+                              height: MediaQuery.of(context).size.height - 400,
                             ),
                           ),
                         ),
@@ -86,169 +89,203 @@ class _AdminHomePageState extends State<AdminHomePage> {
                   )
                   .toList(),
             ),
+
+            SizedBox(height: 30,),
+
             Column(
               children: [
-                Row(
-                  children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      color: Colors.grey,
-                      child: Container(
-                        height: 160,
-                        width: 160,
-                        child: Center(
-                          child: ListTile(
-                            title: TextButton(
-                              style: TextButton.styleFrom(
-                                alignment: Alignment.bottomCenter,
-                                primary: Colors.white,
-                                onSurface: Colors.grey,
-                                shadowColor: Colors.red,
-                                elevation: 15,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AddCarPage.routeName);
-                              },
-                              child: Text(
-                                "Add Car",
-                                style: TextStyle(
-                                    color: Colors.tealAccent,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      elevation: 28,
-                      shadowColor: Colors.red,
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      color: Colors.grey,
-                      child: Container(
-                        height: 160,
-                        width: 160,
-                        child: Center(
-                          child: ListTile(
-                            title: TextButton(
-                              style: TextButton.styleFrom(
-                                alignment: Alignment.bottomCenter,
-                                primary: Colors.white,
-                                onSurface: Colors.grey,
-                                shadowColor: Colors.red,
-                                elevation: 15,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AddCarListPage.routeName);
-                              },
-                              child: Text(
-                                "Show Car List",
-                                style: TextStyle(
-                                    color: Colors.tealAccent,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      elevation: 28,
-                      shadowColor: Colors.red,
-                      margin: EdgeInsets.all(20),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      color: Colors.grey,
-                      child: Container(
-                        height: 160,
-                        width: 160,
-                        child: Center(
-                          child: ListTile(
-                            title: TextButton(
-                              style: TextButton.styleFrom(
-                                alignment: Alignment.bottomCenter,
-                                primary: Colors.white,
-                                onSurface: Colors.grey,
-                                shadowColor: Colors.red,
-                                elevation: 15,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AddDriverPage.routeName);
-                              },
-                              child: Text(
-                                "Add Driver",
-                                style: TextStyle(
-                                    color: Colors.tealAccent,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      elevation: 28,
-                      shadowColor: Colors.red,
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Card(
 
-                      elevation: 28,
-                      margin: EdgeInsets.all(20),
-                      shadowColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      color: Colors.grey,
-                      child: Container(
-                        height: 160,
-                        width: 160,
-                        child: Center(
-                          child: ListTile(
-                            title: TextButton(
-                              style: TextButton.styleFrom(
-                                alignment: Alignment.bottomCenter,
-                                primary: Colors.white,
-                                onSurface: Colors.grey,
-                                shadowColor: Colors.red,
-                                elevation: 15,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AddDriverListPage.routeName);
-                              },
-                              child: Text(
-                                "Show Driver List",
-                                style: TextStyle(
-                                    color: Colors.tealAccent,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                  GestureDetector(
+                    onTap: (){Navigator.pushNamed(context, AddCarPage.routeName);},
+                    child: Container(
+                      height: 50,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: const [
+
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 1,
+                              blurRadius: 8,
+                              offset: Offset(4, 4),
                             ),
-                          ),
-                        ),
+
+                            BoxShadow(
+                              color: Colors.white,
+                              spreadRadius: 1,
+                              blurRadius: 8,
+                              offset: Offset(-4, -4),
+                            ),
+
+                          ]
+
                       ),
 
+                      child: const Center(
+                        child: Text(
+                          'Add Car',
+                          style: TextStyle(
+                            color: Colors.purple,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+
+                  SizedBox(width: 30,),
+
+                  GestureDetector(
+                    onTap: (){Navigator.pushNamed(context, AddDriverPage.routeName);},
+                    child: Container(
+                      height: 50,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: const [
+
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 1,
+                              blurRadius: 8,
+                              offset: Offset(4, 4),
+                            ),
+
+                            BoxShadow(
+                              color: Colors.white,
+                              spreadRadius: 1,
+                              blurRadius: 8,
+                              offset: Offset(-4, -4),
+                            ),
+
+                          ]
+
+                      ),
+
+
+                      child: const Center(
+                        child: Text(
+                          'Add Driver',
+                          style: TextStyle(
+                            color: Colors.purple,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                ],),
+
+                SizedBox(height: 30,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    GestureDetector(
+                      onTap: (){Navigator.pushNamed(context, AddCarListPage.routeName);},
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: const [
+
+                              BoxShadow(
+                                color: Colors.grey,
+                                spreadRadius: 1,
+                                blurRadius: 8,
+                                offset: Offset(4, 4),
+                              ),
+
+                              BoxShadow(
+                                color: Colors.white,
+                                spreadRadius: 1,
+                                blurRadius: 8,
+                                offset: Offset(-4, -4),
+                              ),
+
+                            ]
+
+                        ),
+
+                        child: const Center(
+                          child: Text(
+                            'Car Details',
+                            style: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 30,),
+
+                    GestureDetector(
+                      onTap: (){Navigator.pushNamed(context, AddDriverListPage.routeName);},
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: const [
+
+                              BoxShadow(
+                                color: Colors.grey,
+                                spreadRadius: 1,
+                                blurRadius: 8,
+                                offset: Offset(4, 4),
+                              ),
+
+                              BoxShadow(
+                                color: Colors.white,
+                                spreadRadius: 1,
+                                blurRadius: 8,
+                                offset: Offset(-4, -4),
+                              ),
+
+                            ]
+
+                        ),
+
+
+                        child: const Center(
+                          child: Text(
+                            'Driver Details',
+                            style: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  ],),
+
+
+
               ],
             ),
+
           ],
+
         ),
       ),
     );

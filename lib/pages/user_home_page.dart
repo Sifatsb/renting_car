@@ -20,11 +20,11 @@ class _UserHomepageState extends State<UserHomepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text("User Page",style: TextStyle(color: Colors.white70),),
+        title: const Text("User Page",style: TextStyle(color: Colors.white70),),
       ),
       body: FlutterLogin(
         theme: LoginTheme(primaryColor: Colors.orangeAccent),
-        logo: AssetImage(
+        logo: const AssetImage(
           'images/bugatti.png',
         ),
         onLogin: (LoginData) {

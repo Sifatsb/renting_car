@@ -45,14 +45,14 @@ class _AddDriverPageState extends State<AddDriverPage> {
       backgroundColor: Colors.orange,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text(
+        title: const Text(
           'Admin Add Driver',
           style: TextStyle(color: Colors.white70),
         ),
         actions: [
           IconButton(
               onPressed: _saveDriverList,
-              icon: Icon(
+              icon: const Icon(
                 Icons.save,
                 color: Colors.white70,
               ))
@@ -62,49 +62,49 @@ class _AddDriverPageState extends State<AddDriverPage> {
         key: formKey,
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: carNameControler,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Car Name', prefixIcon: Icon(Icons.car_crash)),
             ),
             TextFormField(
               controller: driverNameControler,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Driver Name', prefixIcon: Icon(Icons.person)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: driverPhoneNumberControler,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Phone Number',
                   prefixIcon: Icon(Icons.dialer_sip)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: driverNidControler,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'NID', prefixIcon: Icon(Icons.numbers_sharp)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: driverExperienceControler,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Experience', prefixIcon: Icon(Icons.person)),
             ),
             Card(
               color: Colors.deepOrange,
               elevation: 25,
               shadowColor: Colors.green,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -112,10 +112,10 @@ class _AddDriverPageState extends State<AddDriverPage> {
                     color: Colors.deepOrange,
                     elevation: 25,
                     shadowColor: Colors.green,
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: _imagePath == null
                         ? Image.asset(
-                            'images/img.png',
+                            'images/person.png',
                             height: 200,
                             width: 200,
                             fit: BoxFit.contain,
@@ -144,12 +144,12 @@ class _AddDriverPageState extends State<AddDriverPage> {
                               _imageSource = ImageSource.camera;
                               _getImage();
                             },
-                            child: Text(
+                            child: const Text(
                               'Camera',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         ElevatedButton(
@@ -162,7 +162,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                               _imageSource = ImageSource.gallery;
                               _getImage();
                             },
-                            child: Text(
+                            child: const Text(
                               'Gallery',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
@@ -173,23 +173,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                 ],
               ),
             ),
-            TextButton(
-                style: TextButton.styleFrom(
-                  alignment: Alignment.bottomCenter,
-                  primary: Colors.white,
-                  backgroundColor: Colors.teal,
-                  onSurface: Colors.grey,
-                  shadowColor: Colors.red,
-                  elevation: 15,
-                ),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, AdminHomePage.routeName);
-                },
-                child: Text(
-                  "Click Here to travel Home page Again",
-                  style: TextStyle(fontSize: 20),
-                )),
+
           ],
         ),
       ),

@@ -50,30 +50,36 @@ class _BookingPageState extends State<BookingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text(
+        title: const Text(
           'Booking Page',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white70),
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         actions: [
-          Center(
-              child: Text("USD - $rentAmount",
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70))),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: Text("USD - $rentAmount\$",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white))),
+          ),
         ],
       ),
+
       body: Form(
         key: formKey,
+
         child: ListView(
           children: [
+
             TextFormField(
               controller: userNameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Enter Your Name', prefixIcon: Icon(Icons.person)),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -86,12 +92,14 @@ class _BookingPageState extends State<BookingPage> {
                 }
               },
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 10,
             ),
+
             TextFormField(
               controller: userNumberController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Enter Your Phone Number',
                   prefixIcon: Icon(Icons.phone)),
               validator: (value) {
@@ -105,61 +113,68 @@ class _BookingPageState extends State<BookingPage> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
+
             TextFormField(
               controller: userEmailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Enter Your Email', prefixIcon: Icon(Icons.email)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
+
             TextFormField(
               controller: userFromController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Current Address',
                   prefixIcon: Icon(Icons.location_city_rounded)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
+
             TextFormField(
               controller: userToController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Destination Address',
                   prefixIcon: Icon(Icons.location_city_rounded)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
+
             Card(
               color: Colors.deepOrangeAccent,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   TextButton(
                       style: TextButton.styleFrom(
                         primary: Colors.lightGreenAccent,
                         onSurface: Colors.grey, // Disable color
                       ),
                       onPressed: _selectedDate,
-                      child: Text(
+                      child: const Text(
                         'Touch here to pick the renting date',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
                       )),
                   Text(
                     _rentingDate == null ? 'No Date Selected' : _rentingDate!,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                   )
+
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
+
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Card(
@@ -167,10 +182,10 @@ class _BookingPageState extends State<BookingPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Select Gender ',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     Radio<String>(
                         value: 'Male',
@@ -180,10 +195,10 @@ class _BookingPageState extends State<BookingPage> {
                             _genderGroupValue = value;
                           });
                         }),
-                    Text(
+                    const Text(
                       'Male',
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     Radio<String>(
                         value: 'Female',
@@ -193,16 +208,16 @@ class _BookingPageState extends State<BookingPage> {
                             _genderGroupValue = value;
                           });
                         }),
-                    Text(
+                    const Text(
                       'Female',
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             ElevatedButton(
@@ -266,9 +281,9 @@ class _BookingPageState extends State<BookingPage> {
   void _selectedDate() async {
     final selectedDate = await showDatePicker(
         context: context,
-        initialDate: DateTime(1950),
+        initialDate: DateTime.now(),
         firstDate: DateTime(1950),
-        lastDate: DateTime(2022));
+        lastDate: DateTime(2023));
 
     if (selectedDate != null) {
       setState(() {

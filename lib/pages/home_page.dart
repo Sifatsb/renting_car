@@ -18,8 +18,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
-        title: const Text('data'),
+        backgroundColor: Colors.deepOrangeAccent,
+        title: const Text('Sthanantror', textAlign: TextAlign.center,),
       ),
       body: SafeArea(
 

@@ -17,7 +17,6 @@ class AddBookingProvider extends ChangeNotifier {
     if(rowId > 0) {
       addBookingModel.id = rowId;
       addBookingList.add(addBookingModel);
-      // addCarList.sort((c1, c2) => c1.carName.compareTo(c2.carName));
       notifyListeners();
       return true;
     }

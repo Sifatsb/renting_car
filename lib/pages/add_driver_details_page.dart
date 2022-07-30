@@ -75,7 +75,7 @@ class _AddDriverShowAllDetailsPageState
                               children: [
                                 Icon(
                                   Icons.person,
-                                  size: 60,
+                                  size: 30,
                                 ),
                                 Text(
                                     " Driver Name - ${model.driverName.toUpperCase()}",
@@ -94,10 +94,10 @@ class _AddDriverShowAllDetailsPageState
                               children: [
                                 Icon(
                                   Icons.numbers,
-                                  size: 60,
+                                  size: 30,
                                 ),
                                 Text(
-                                    " Driver Phone Number - ${model.driverPhoneNumber}",
+                                    " Driver Phone Number\n - ${model.driverPhoneNumber}",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class _AddDriverShowAllDetailsPageState
                               children: [
                                 Icon(
                                   Icons.now_widgets_outlined,
-                                  size: 60,
+                                  size: 30,
                                 ),
                                 Text(" Driver NID Number - ${model.driverNid}",
                                     style: TextStyle(
@@ -131,7 +131,7 @@ class _AddDriverShowAllDetailsPageState
                               children: [
                                 Icon(
                                   Icons.car_rental,
-                                  size: 60,
+                                  size: 30,
                                 ),
                                 Text(
                                     " List of Driving Car Name - ${model.drivingCarName}",
@@ -150,7 +150,7 @@ class _AddDriverShowAllDetailsPageState
                               children: [
                                 Icon(
                                   Icons.extension,
-                                  size: 60,
+                                  size: 30,
                                 ),
                                 Text(
                                     " Driving Experience - ${model.driverExperience}",
@@ -167,25 +167,7 @@ class _AddDriverShowAllDetailsPageState
                     SizedBox(
                       height: 20,
                     ),
-                    Center(
-                      child: TextButton(
-                          style: TextButton.styleFrom(
-                            alignment: Alignment.bottomCenter,
-                            primary: Colors.white,
-                            backgroundColor: Colors.teal,
-                            onSurface: Colors.grey,
-                            shadowColor: Colors.red,
-                            elevation: 15,
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, AdminHomePage.routeName);
-                          },
-                          child: Text(
-                            "Click Here to travel Home page Again",
-                            style: TextStyle(fontSize: 20),
-                          )),
-                    )
+
                   ],
                 ),
               );

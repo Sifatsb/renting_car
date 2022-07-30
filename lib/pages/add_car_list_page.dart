@@ -18,7 +18,7 @@ class _AddCarListPageState extends State<AddCarListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text(

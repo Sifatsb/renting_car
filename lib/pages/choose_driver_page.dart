@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renting_car/models/add_car.dart';
 import 'package:renting_car/models/add_driver.dart';
-import 'package:renting_car/pages/add_driver_page.dart';
 import 'package:renting_car/pages/booking_page.dart';
 import 'package:renting_car/provider/add_car_provider.dart';
 import 'package:renting_car/provider/add_driver_provider.dart';
@@ -37,12 +35,15 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
-        title: Text("Choose Driver According your choose.."),
+        title: const Text("Choose Driver"),
       ),
       body: Center(
         child: ListView(
+
           children: [
+
             Consumer<AddCarProvider>(
               builder: (context, provider, _) => FutureBuilder<AddCarModel>(
                 future: provider.getAddCarsById(id),
@@ -52,14 +53,27 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                     print(model.toString());
                     return Column(
                       children: [
-                        Image.file(
-                          File(model!.carImage!),
-                          width: double.infinity,
-                          height: 300,
-                          fit: BoxFit.cover,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+
+                            Image.file(
+                              File(model!.carImage!),
+                              width: MediaQuery.of(context).size.width/3,
+                              height: 200,
+                              fit: BoxFit.contain,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Car Name: ${model.carName}'),
+                                Text('Car Number: ${model.carNumber}'),
+                              ],
+                            )
+
+                          ],
                         ),
-                        Text(model.carName),
-                        Text(model.carNumber),
+
                       ],
                     );
                   }
@@ -70,6 +84,9 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                 },
               ),
             ),
+
+            const SizedBox(height: 10,),
+
             Consumer<AddDriverProvider>(
               builder: (context, provider, _) => FutureBuilder<AddDriverModel>(
                 future: provider.getAddDriversById(id),
@@ -77,18 +94,34 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                   if (snapshot.hasData) {
                     final model = snapshot.data;
                     return Column(
+
                       children: [
-                        Image.file(
-                          File(model!.driverImage!),
-                          width: double.infinity,
-                          height: 300,
-                          fit: BoxFit.cover,
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+
+                            Image.file(
+                              File(model!.driverImage!),
+                              width: MediaQuery.of(context).size.width/3,
+                              height: 200,
+                              fit: BoxFit.contain,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Driver Name: ${model.driverName}'),
+                                Text('Driver NID: ${model.driverNid}'),
+                                Text('Phone Number: ${model.driverPhoneNumber}'),
+                                Text('Experience: ${model.driverExperience!}'),
+                              ],
+                            )
+
+                          ],
                         ),
-                        Text(model.driverName),
-                        Text(model.driverNid),
-                        Text(model.driverPhoneNumber),
-                        Text(model.driverExperience!),
+
                       ],
+
                     );
                   }
                   if (snapshot.hasError) {
@@ -98,24 +131,28 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                 },
               ),
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 20,
             ),
+
             Container(
               height: 5,
               color: Colors.deepOrange,
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 20,
             ),
+
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
               child: Card(
                 color: Colors.lightGreen,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Packgae & Price",
@@ -123,6 +160,7 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                     ),
+                    
                     ElevatedButton(
                         onPressed: () {
                           showModalBottomSheet(
@@ -140,7 +178,7 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                                                     customPackageController,
                                                 keyboardType:
                                                     TextInputType.text,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   labelText:
                                                       "Enter number of days you wanna rent",
                                                   prefixIcon: Icon(
@@ -158,9 +196,10 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                                                     });
                                                   },
                                                   icon: Icon(Icons.add))),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 30,
                                           ),
+                                          
                                           TextButton(
                                               onPressed: () {
                                                 Navigator.pushNamed(context,
@@ -169,7 +208,7 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                                               },
                                               child: Text(
                                                 "$customPrice for $day days",
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 35,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black),
@@ -186,52 +225,59 @@ class _ChooseDriverPageState extends State<ChooseDriverPage> {
                 ),
               ),
             ),
+
             Card(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
                   TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, BookingPage.routeName,
                             arguments: dayPrice);
                       },
                       child: Text(
-                        "$dayPrice USD/Day",
-                        style: TextStyle(
+                        "$dayPrice\$ \nUSD/Day",
+                        style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       )),
+
                   TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, BookingPage.routeName,
                             arguments: weekPrice);
                       },
                       child: Text(
-                        "$weekPrice USD/Week",
-                        style: TextStyle(
+                        "$weekPrice\$ \nUSD/Week",
+                        style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       )),
+
                   TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, BookingPage.routeName,
                             arguments: monthPrice);
                       },
                       child: Text(
-                        "$monthPrice USD/Month",
-                        style: TextStyle(
+                        "$monthPrice\$ \n USD/Month",
+                        style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       )),
+
                 ],
               ),
             ),
+
             SizedBox(
               height: 30,
             ),
+
           ],
         ),
       ),

@@ -23,65 +23,139 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
     super.didChangeDependencies();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Confirm Booking Page"),
+        backgroundColor: Colors.deepOrangeAccent,
+        title: const Text("Confirm Booking Page"),
       ),
       body: Consumer<AddBookingProvider>(
           builder: (context, provider, _) => ListView.builder(
+
               itemCount: provider.addBookingList.length,
               itemBuilder: (context, index) {
                 final booking = provider.addBookingList[index];
+
                 return Card(
-                  child: Column(
-                    children: [
-                      Text("$rentAmount"),
-                      SizedBox(
-                        height: 20,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+
+                        children: [
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("Rent Amount", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("$rentAmount\$", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("UserName:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userName}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("User Number:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userNumber}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("User Email:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userEmail}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("Current Location:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userFrom}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("Destination:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.userTo}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+
+                                  const Text("Rent Date:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                                  Text("${booking.rentDate}", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+
+                                ],
+                              ),
+                              const SizedBox(height: 10,),
+
+                            ],
+                          ),
+
+                          const SizedBox(height: 60,),
+
+                          ElevatedButton(
+                            onPressed: () {
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.success,
+                                text: "Your transaction was successful!",
+                              );
+                              provider.addBookingList.clear();
+
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepPurple,
+                                fixedSize: const Size(350, 80),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50))),
+                            child:
+                            const Text('Click to confirm Your BOOKING......', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                          ),
+
+
+                        ],
                       ),
-                      Text(booking.userName),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(booking.userNumber),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(booking.userEmail!),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(booking.userFrom),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(booking.userTo),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(booking.rentDate),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          CoolAlert.show(
-                            context: context,
-                            type: CoolAlertType.success,
-                            text: "Your transaction was successful!",
-                          );
-                        },
-                        child:
-                            const Text('Click to confirm Your BOOKING......'),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurple,
-                            fixedSize: const Size(100, 70),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50))),
-                      ),
-                    ],
+                    ),
                   ),
                 );
               })),

@@ -56,7 +56,7 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                         child: Image.file(
                           File(model!.carImage!),
                           height: 350,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
@@ -73,7 +73,7 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                                 Text(
                                     " Car Name - ${model.carName.toUpperCase()}",
                                     style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.yellowAccent,
                                       backgroundColor: Colors.grey,
@@ -91,7 +91,7 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                                 ),
                                 Text(" Car Number - ${model.carNumber}",
                                     style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.yellowAccent,
                                       backgroundColor: Colors.grey,
@@ -109,7 +109,7 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                                 ),
                                 Text(" Car Capacity - ${model.carCapacity}",
                                     style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.yellowAccent,
                                       backgroundColor: Colors.grey,
@@ -128,7 +128,7 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                                 Text(
                                     " Car Manufacturer - ${model.carManufacturer}",
                                     style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.yellowAccent,
                                       backgroundColor: Colors.grey,
@@ -140,26 +140,10 @@ class _AddCarShowAllDetailsPageState extends State<AddCarShowAllDetailsPage> {
                             ),
                           ],
                         )),
-                    SizedBox(height: 20,),
-                    Center(
-                      child: TextButton(
-                          style: TextButton.styleFrom(
-                            alignment: Alignment.bottomCenter,
-                            primary: Colors.white,
-                            backgroundColor: Colors.teal,
-                            onSurface: Colors.grey,
-                            shadowColor: Colors.red,
-                            elevation: 15,
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, AdminHomePage.routeName);
-                          },
-                          child: Text(
-                            "Click Here to travel Home page Again",
-                            style: TextStyle(fontSize: 20),
-                          )),
-                    )
+                    SizedBox(
+                      height: 20,
+                    ),
+
                   ],
                 ),
               );
