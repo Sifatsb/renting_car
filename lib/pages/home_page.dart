@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
+        centerTitle: true,
         title: const Text('Sthanantror'),
       ),
       body: SafeArea(

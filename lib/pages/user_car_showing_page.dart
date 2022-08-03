@@ -70,7 +70,7 @@ class _UserCarShowingState extends State<UserCarShowing> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.car_crash_rounded), label: "All Cars"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.car_crash_rounded), label: "Home"),
+                  icon: Icon(Icons.car_crash_rounded), label: "LogOut"),
             ],
           ),
         ),

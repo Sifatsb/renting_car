@@ -141,7 +141,7 @@ class _AddDriverShowAllDetailsPageState
                                   size: 40,
                                 ),
                                 Text(
-                                    " List of Driving Car Name - ${model.drivingCarName}",
+                                    "Car Name - ${model.drivingCarName}",
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
